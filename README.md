@@ -47,6 +47,11 @@ uv run python -m jarvis.server
 
 Then open `http://127.0.0.1:8000`.
 
+Notes:
+- The Dev UI lists apps by scanning directories under `AGENTS_DIR`.
+  By default this repo points ADK at `./agents`, which contains only `jarvis`,
+  so you don't have to manually select it each run.
+
 ## Why not `adk web --session_service_uri ...`?
 
 ADK’s CLI defaults to local SQLite session storage unless you pass

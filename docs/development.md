@@ -8,6 +8,7 @@
 
 ### Repo layout
 
+- `agents/jarvis/agent.py`: ADK Dev UI entrypoint (shim that re-exports `jarvis.agent.root_agent`)
 - `jarvis/agent.py`: defines `root_agent` only (no DB wiring)
 - `jarvis/server.py`: local FastAPI entrypoint that runs ADK Web using Postgres sessions
 - `jarvis/utils/`: small helper modules (env + db url normalization)
@@ -42,6 +43,13 @@ uv sync --extra dev
 
 ```bash
 uv run python -m jarvis.server
+```
+
+If you're already inside the `jarvis/` directory, this also works:
+
+```bash
+cd jarvis
+uv run python -m server
 ```
 
 ### Checks (must be 100% green)
