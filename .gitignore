@@ -56,7 +56,10 @@ env/
 build/
 dist/
 *.egg-info/
+google_adk_wo_gcp.egg-info/
 pip-wheel-metadata/
+*.egg
+.Python
 
 # ---------------------------------------------------------------------------
 # Jupyter / notebooks
