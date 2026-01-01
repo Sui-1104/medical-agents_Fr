@@ -5,7 +5,7 @@ from google.adk.models.lite_llm import LiteLlm
 # Import tools and sub-agents
 from .tools.calculator import add_tool, multiply_tool
 from .sub_agents.researcher import researcher_agent
-from google.adk.tools.mcp_tool.mcp_toolset import McpToolset, SseConnectionParams
+from google.adk.tools.mcp_tool.mcp_toolset import McpToolset, StreamableHTTPConnectionParams
 
 api_base_url = "https://openrouter.ai/api/v1"
 
@@ -15,7 +15,7 @@ github_mcp_tools = []
 if github_token:
     github_mcp_tools = [
         McpToolset(
-            connection_params=SseConnectionParams(
+            connection_params=StreamableHTTPConnectionParams(
                 url="https://api.githubcopilot.com/mcp/",
                 headers={"Authorization": f"Bearer {github_token}"}
             )
