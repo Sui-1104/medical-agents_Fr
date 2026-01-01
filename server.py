@@ -32,7 +32,7 @@ def _agents_dir() -> str:
 def create_app() -> FastAPI:
   # Load .env from root or specific override
   repo_root = Path(__file__).resolve().parent
-  
+
   # Check for .env in root
   load_standard_env_files(repo_root=repo_root, agent_dir=Path("."))
 

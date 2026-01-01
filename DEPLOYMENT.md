@@ -44,6 +44,7 @@ Best for small servers (e.g., 512MB RAM) since you avoid Docker overhead.
 sudo apt update
 sudo apt install -y python3-venv git
 # Install uv (fast python package manager)
+# Note: Inspect the script before running if you have security concerns.
 curl -LsSf https://astral.sh/uv/install.sh | sh
 source $HOME/.cargo/env
 ```

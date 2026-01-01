@@ -1,5 +1,3 @@
-from typing import Callable
-
 from google.adk.tools import function_tool
 
 def add(a: int, b: int) -> int:

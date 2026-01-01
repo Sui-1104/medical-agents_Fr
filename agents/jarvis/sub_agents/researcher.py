@@ -8,8 +8,8 @@ def researcher_agent() -> Agent:
     model=LiteLlm(
         model="openrouter/openai/gpt-oss-20b",
         api_base=api_base_url,
-        api_key=os.environ["OPENROUTER_API_KEY"],
-    ),
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+    )
 
     return Agent(
         model=model,

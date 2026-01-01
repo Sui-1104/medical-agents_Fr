@@ -10,9 +10,9 @@ api_base_url = "https://openrouter.ai/api/v1"
 
 root_agent = Agent(
     model=LiteLlm(
-        model="openrouter/deepseek/deepseek-v3.2",
+        model="openrouter/openai/gpt-oss-20b",
         api_base=api_base_url,
-        api_key=os.environ["OPENROUTER_API_KEY"],
+        api_key=os.getenv("OPENROUTER_API_KEY"),
     ),
     name="root_agent",
     description="A helpful assistant for user questions.",
