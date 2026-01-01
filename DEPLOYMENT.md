@@ -17,7 +17,7 @@ Best if you don't want to manage Python versions on the host.
 1.  **Clone & Config**
     ```bash
     git clone <your-repo-url>
-    cd open-services-agent-starter-pack
+    cd google-adk-on-bare-metal
     cp .env.example .env
     # Edit .env with your DATABASE_URL and API Keys
     ```
@@ -52,7 +52,7 @@ source $HOME/.cargo/env
 ### 2. Clone & Setup
 ```bash
 git clone <your-repo-url>
-cd open-services-agent-starter-pack
+cd google-adk-on-bare-metal
 
 # Install Python dependencies
 uv sync
