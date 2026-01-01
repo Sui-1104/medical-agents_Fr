@@ -771,7 +771,7 @@ wheels = [
 ]
 
 [[package]]
-name = "google-adk-wo-gcp"
+name = "google-adk-on-bare-metal"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

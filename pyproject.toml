@@ -1,5 +1,5 @@
 [project]
-name = "google-adk-wo-gcp"
+name = "google-adk-on-bare-metal"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
