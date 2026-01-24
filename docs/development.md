@@ -23,6 +23,11 @@ Create `.env` in the project root:
 - `OPENROUTER_API_KEY`: OpenRouter API key (required for non-Google models)
 - `DATABASE_URL`: Postgres URL for sessions (required for persistence)
 
+Observability (Optional):
+- `LANGFUSE_PUBLIC_KEY`: Langfuse Public Key
+- `LANGFUSE_SECRET_KEY`: Langfuse Secret Key
+- `LANGFUSE_BASE_URL`: Langfuse Host (default: EU)
+
 Optional:
 
 - `HOST`: server bind host (default: `127.0.0.1`)

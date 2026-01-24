@@ -343,12 +343,12 @@ EXPOSE 8000
 ### Startup Command
 ```dockerfile
 # Run the FastAPI server via main() for unified startup logic (logging, etc.)
-CMD ["python", "-m", "your_agent_name.server"]
+CMD ["python", "-m", "agent_foundation.server"]
 ```
 **What:** Default command when container starts
 **Why:**
 - Calls `server.main()` for unified startup logic
-  - Sets up OpenTelemetry observability (traces and logs to Google Cloud)
+  - Sets up OpenTelemetry observability (traces and logs to your preferred backend)
   - Consistent entry point for both local dev (`uv run server`) and Docker
 - `main()` calls `uvicorn.run(app, host=os.getenv("HOST", "127.0.0.1"), port=...)`
   - Secure default: 127.0.0.1 (only local connections)

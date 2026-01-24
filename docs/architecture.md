@@ -13,7 +13,7 @@ Google ADK is useful even without Google Cloud:
 - **Entry point**: `python -m agent_foundation.server`
   - Wraps `google.adk.cli.fast_api.get_fast_api_app(...)`
   - Forces a Postgres-backed session store via `DATABASE_URL`
-  - Configures basic logging and OpenTelemetry resource attributes for local tracing
+  - Configures OpenTelemetry for vendor-neutral tracing (Langfuse auto-config included)
 - **Agents directory**: `src/`
   - ADK Dev UI lists *directories* under `agents_dir`.
 - **Main Agent**: `src/agent_foundation/agent.py`

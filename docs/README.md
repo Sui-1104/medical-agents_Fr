@@ -37,7 +37,8 @@ docs/
 ## Quick Links
 
 ### Getting Started
-- [Development Guide](base-infra/development.md) - Local workflow and code quality
+- [Development Guide](development.md) - Local workflow and code quality
+- [Deployment Guide](DEPLOYMENT.md) - Bare metal and Docker deployment
 - [Environment Variables](base-infra/environment-variables.md) - Complete configuration reference
 - [Docker Compose Workflow](base-infra/docker-compose-workflow.md) - Local development
 

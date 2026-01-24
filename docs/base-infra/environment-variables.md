@@ -67,7 +67,21 @@ Complete reference for all environment variables used in this project.
 
 **OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT**
 - **Default:** `FALSE`
-- **Purpose:** Capture full prompts/responses in traces (requires GCP project)
+- **Purpose:** Capture full prompts/responses in traces. Set to `TRUE` to see conversation content in Langfuse or Jaeger.
+
+### Observability (Langfuse)
+
+**LANGFUSE_PUBLIC_KEY**
+- **Value:** `pk-lf-...`
+- **Purpose:** Automatically configures OTel to export to Langfuse.
+
+**LANGFUSE_SECRET_KEY**
+- **Value:** `sk-lf-...`
+- **Purpose:** Authentication for Langfuse OTLP.
+
+**LANGFUSE_BASE_URL**
+- **Default:** `https://cloud.langfuse.com`
+- **Options:** `https://us.cloud.langfuse.com` or your self-hosted URL.
 
 ## Environment Variable Precedence
 

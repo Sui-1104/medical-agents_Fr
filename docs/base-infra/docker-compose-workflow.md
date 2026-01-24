@@ -112,23 +112,22 @@ develop:
 Docker Compose loads `.env` automatically. Key variables:
 
 ```bash
-# Google Cloud Vertex AI model authentication
-GOOGLE_GENAI_USE_VERTEXAI=TRUE
-GOOGLE_CLOUD_PROJECT=your-project-id
-GOOGLE_CLOUD_LOCATION=us-central1
+# Identity
+AGENT_NAME=my-local-agent
+
+# API Keys
+GOOGLE_API_KEY=your-key
+OPENROUTER_API_KEY=your-key
+
+# Observability (Optional)
+LANGFUSE_PUBLIC_KEY=pk-lf-...
+LANGFUSE_SECRET_KEY=sk-lf-...
 
 # Logging verbosity
 LOG_LEVEL=DEBUG
 
-# Server configuration
-# **RECOMMENDED**: DO NOT OVERRIDE PORT here when running with docker-compose
-# Dockerfile overrides HOST=0.0.0.0 in container
-# docker-compose maps container port 8000 to 8000 on the host machine
-
 # Enable web UI
 SERVE_WEB_INTERFACE=true
-
-# Additional variables as needed...
 ```
 
 **Note:** The container uses `HOST=0.0.0.0` to allow connections from the host machine.
@@ -140,16 +139,11 @@ SERVE_WEB_INTERFACE=true
 ### Container keeps restarting
 - Check logs: `docker compose logs -f`
 - Verify `.env` file exists and has required variables
-- Ensure Application Default Credentials are configured: `gcloud auth application-default login`
 
 ### Changes not appearing
 - **For code changes:** Should sync instantly via watch mode
 - **For dependency changes:** Watch should auto-rebuild
 - **If stuck:** Stop and restart with `docker compose up --build --watch`
-
-### Permission errors
-- Data directory: Mounted read-only, should not need write access
-- Credentials: Ensure `~/.config/gcloud/application_default_credentials.json` exists and is readable
 
 ### Port already in use
 ```bash
@@ -159,14 +153,6 @@ lsof -i :8000
 # Stop the conflicting process or change PORT in .env
 PORT=8001
 ```
-
-### Windows path compatibility
-- The `docker-compose.yml` uses `${HOME}` which is Unix/Mac specific
-- Windows users need to update the volume path in `docker-compose.yml`:
-  - Replace `${HOME}/.config/gcloud/application_default_credentials.json`
-  - With your Windows path: `C:\Users\YourUsername\AppData\Roaming\gcloud\application_default_credentials.json`
-- Alternative: Use `%USERPROFILE%` environment variable in PowerShell
-- See the comment in `docker-compose.yml` for the exact syntax
 
 ---
 

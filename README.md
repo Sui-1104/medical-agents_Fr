@@ -65,7 +65,8 @@ ADK’s CLI defaults to local SQLite session storage unless you pass
 - sessions always go to Postgres (once `DATABASE_URL` is set)
 - multiple agents are served automatically.
 
-## Development
+## Development & Observability
 
-See:
-- `docs/base-infra/development.md`
+- [Development Guide](docs/development.md) - Local workflow and code quality
+- [Observability Guide](docs/base-infra/observability.md) - Langfuse and Tracing setup
+- [Environment Variables](docs/base-infra/environment-variables.md) - Full reference
