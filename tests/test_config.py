@@ -25,20 +25,14 @@ class TestServerEnv:
     def test_server_env_missing_required_field_raises_validation_error(self) -> None:
         """Test that missing required fields raise ValidationError."""
         data: dict[str, str] = {
-            # Missing GOOGLE_CLOUD_PROJECT, AGENT_NAME,
-            # and OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT
+            # Missing AGENT_NAME (the only required field)
         }
 
         with pytest.raises(ValidationError) as exc_info:
             ServerEnv.model_validate(data)
 
         errors = exc_info.value.errors()
-        assert any(error["loc"] == ("GOOGLE_CLOUD_PROJECT",) for error in errors)
         assert any(error["loc"] == ("AGENT_NAME",) for error in errors)
-        assert any(
-            error["loc"] == ("OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT",)
-            for error in errors
-        )
 
     def test_server_env_optional_fields_use_defaults(
         self, valid_server_env: dict[str, str]
@@ -201,8 +195,7 @@ class TestInitializeEnvironment:
     ) -> None:
         """Test that validation failure causes sys.exit."""
         # Set incomplete environment (missing required field)
-        # Don't set GOOGLE_CLOUD_PROJECT
-        monkeypatch.setenv("AGENT_NAME", "test-agent")
+        # Don't set any environment variables
 
         with pytest.raises(SystemExit):
             initialize_environment(ServerEnv, print_config=False)
@@ -261,8 +254,7 @@ class TestInitializeEnvironment:
     ) -> None:
         """Test that validation errors are printed before exit."""
         # Set incomplete environment
-        monkeypatch.setenv("AGENT_NAME", "test-agent")
-        # Missing GOOGLE_CLOUD_PROJECT
+        # Missing AGENT_NAME
 
         with pytest.raises(SystemExit):
             initialize_environment(ServerEnv, print_config=False)
