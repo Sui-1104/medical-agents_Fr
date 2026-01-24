@@ -13,4 +13,4 @@ This repo is a **production-ready template** for building and deploying AI agent
 ## Key Features
 - **Docker-Ready Deployment:** Complete Docker and Docker Compose configuration for immediate, consistent deployment across environments.
 - **Multi-LLM Integration:** Built-in support for multiple LLM providers (such as Google and OpenRouter) via LiteLLM and Google ADK.
-- **Enterprise-Grade Observability:** A codebase pre-configured with OpenTelemetry and Google Cloud Logging to ensure production systems are measurable and debuggable.
+- **Enterprise-Grade Observability:** A codebase pre-configured with OpenTelemetry to ensure production systems are measurable and debuggable.
