@@ -7,7 +7,8 @@ implementation choices (plugins, tools, etc.).
 Future: Container-based smoke tests for CI/CD will be added here.
 """
 
-from typing import Protocol, Sequence, cast
+from collections.abc import Sequence
+from typing import Any, Protocol, cast
 
 from agent_foundation import app
 
@@ -16,7 +17,7 @@ class AgentConfigLike(Protocol):
     """Minimal agent surface needed for integration assertions."""
 
     name: str
-    model: str | None
+    model: Any
     instruction: str | None
     description: str | None
     tools: Sequence[object] | None
@@ -68,8 +69,14 @@ class TestAgentIntegration:
 
         # Required: agent model
         assert typed_agent.model is not None
-        assert isinstance(typed_agent.model, str)
-        assert len(typed_agent.model) > 0
+        # model can be a string name or a model object (e.g. LiteLlm)
+        if isinstance(typed_agent.model, str):
+            assert len(typed_agent.model) > 0
+        else:
+            # If it's an object, it should have a model attribute that is a string
+            assert hasattr(typed_agent.model, "model")
+            assert isinstance(typed_agent.model.model, str)
+            assert len(typed_agent.model.model) > 0
 
     def test_agent_instructions_are_valid_if_configured(self) -> None:
         """Verify agent instructions (if configured) are valid strings."""

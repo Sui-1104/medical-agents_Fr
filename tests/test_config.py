@@ -92,6 +92,36 @@ class TestServerEnv:
         env = ServerEnv.model_validate(data)
         assert env.agent_engine_uri == "agentengine://test-engine-id"
 
+    def test_session_uri_property(self, valid_server_env: dict[str, str]) -> None:
+        """Test that session_uri property is computed correctly."""
+        # Case 1: Neither database_url nor agent_engine
+        env = ServerEnv.model_validate(valid_server_env)
+        assert env.session_uri is None
+
+        # Case 2: Only agent_engine
+        data = {**valid_server_env, "AGENT_ENGINE": "test-engine-id"}
+        env = ServerEnv.model_validate(data)
+        assert env.session_uri == "agentengine://test-engine-id"
+
+        # Case 3: Only database_url (takes precedence)
+        db_url = "postgresql://user:pass@localhost/db?sslmode=require&channel_binding=require"
+        data = {**valid_server_env, "DATABASE_URL": db_url}
+        env = ServerEnv.model_validate(data)
+        # Should replace sslmode=require with ssl=require and remove
+        # channel_binding=require
+        # Note: it replaces &channel_binding=require with empty string
+        expected = "postgresql://user:pass@localhost/db?ssl=require"
+        assert env.session_uri == expected
+
+        # Case 4: Both database_url and agent_engine (database_url takes precedence)
+        data = {
+            **valid_server_env,
+            "DATABASE_URL": "postgresql://user:pass@localhost/db",
+            "AGENT_ENGINE": "test-engine-id",
+        }
+        env = ServerEnv.model_validate(data)
+        assert env.session_uri == "postgresql://user:pass@localhost/db"
+
     def test_allow_origins_list_property(
         self, valid_server_env: dict[str, str]
     ) -> None:
