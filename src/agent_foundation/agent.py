@@ -39,7 +39,7 @@ if model_name.lower().startswith("openrouter/") or "/" in model_name:
         )
 
 root_agent = LlmAgent(
-    name="example_agent",
+    name="root_agent",
     description=return_description_root(),
     before_agent_callback=logging_callbacks.before_agent,
     after_agent_callback=[logging_callbacks.after_agent, add_session_to_memory],

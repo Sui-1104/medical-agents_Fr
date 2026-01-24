@@ -11,6 +11,7 @@ from pathlib import Path
 import uvicorn
 from fastapi import FastAPI
 from google.adk.cli.fast_api import get_fast_api_app
+from openinference.instrumentation.google_adk import GoogleADKInstrumentor
 
 from .utils import (
     ServerEnv,
@@ -26,6 +27,9 @@ env = initialize_environment(ServerEnv)
 configure_otel_resource(
     agent_name=env.agent_name,
 )
+
+# Initialize Langfuse/OpenInference instrumentation
+GoogleADKInstrumentor().instrument()
 
 # Configure logging
 setup_logging(log_level=env.log_level)

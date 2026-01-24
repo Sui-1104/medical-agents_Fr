@@ -6,7 +6,8 @@ You can deploy this Agent Platform using **Docker** (easiest compatibility) or *
 
 1.  **Managed Postgres Database**: You need a connection string (e.g., from Neon, AWS RDS, Supabase).
 2.  **OpenRouter or Google API Key**.
-3.  **Server**: A Linux server (Ubuntu/Debian recommended).
+3.  **AGENT_NAME**: A unique identifier for your agent service.
+4.  **Server**: A Linux server (Ubuntu/Debian recommended).
 
 ---
 

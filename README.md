@@ -3,7 +3,7 @@
 This repo is a **production-ready template** for building and deploying AI agents on your own infrastructure using **Google ADK**, **LiteLLM**, and **Postgres**.
 
 **Key Features:**
-- 🐳 **Self-Hosted Ready**: Docker & Compose setup included. No GCP lock-in.
+- 🐳 **Self-Hosted Ready**: Docker & Compose setup included for private infrastructure.
 - 🧩 **Extensible**: Structured for adding Tools and Sub-Agents easily.
 - 💾 **Persistent**: Postgres-backed sessions out of the box.
 - 🚀 **Modern Stack**: Python 3.13, `uv`, `fastapi`, `asyncpg`.
@@ -21,7 +21,9 @@ This repo is a **production-ready template** for building and deploying AI agent
 
 Create `.env`:
 
-- **`GOOGLE_API_KEY`**: your AI Studio key (or `OPENROUTER_API_KEY`)
+- **`AGENT_NAME`**: a unique identifier for your agent (e.g. `my-awesome-agent`)
+- **`GOOGLE_API_KEY`**: your AI Studio key
+- **`OPENROUTER_API_KEY`**: your OpenRouter key (optional, for LiteLLM models)
 - **`DATABASE_URL`**: a Postgres URL (can be the standard `postgresql://...` form)
 
 Notes:
