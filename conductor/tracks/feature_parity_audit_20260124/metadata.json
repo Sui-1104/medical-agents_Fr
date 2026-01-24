@@ -1,0 +1,8 @@
+{
+  "track_id": "feature_parity_audit_20260124",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-01-24T00:00:00Z",
+  "updated_at": "2026-01-24T00:00:00Z",
+  "description": "Clone the upstream repo, compare features to ensure parity (excluding GCP deployment), and update the /docs directory to fully reflect the self-hosted architecture."
+}
