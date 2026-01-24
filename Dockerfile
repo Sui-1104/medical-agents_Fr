@@ -42,11 +42,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
-# Create non-root user for security
-RUN groupadd -r app && useradd -r -g app app
+# Create non-root user for security (matching common host UID 1000)
+RUN groupadd -g 1000 app && \
+    useradd -u 1000 -g app -s /bin/sh -m app
 
 # Set working directory
 WORKDIR /app
+
+# Pre-create the artifacts directory and set ownership
+RUN mkdir -p /app/src/.adk/artifacts && chown -R app:app /app
 
 # Copy application and virtual environment from builder
 COPY --from=builder --chown=app:app /app .

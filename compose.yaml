@@ -14,9 +14,8 @@ services:
       # DATABASE_URL and API Keys will be loaded from the .env file
     env_file:
       - .env
-    # Volumes are for hot-reloading during development.
-    # For production, remove these volumes to use the immutable code from the image.
+    # Volumes are for hot-reloading and persisting artifacts.
     volumes:
       - ./src:/app/src
-    # restart: always # Uncomment for production to auto-restart
+    restart: always
     command: python -m agent_foundation.server
