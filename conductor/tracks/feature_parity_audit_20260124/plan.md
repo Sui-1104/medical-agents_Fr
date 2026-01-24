@@ -4,9 +4,9 @@
 - [x] Task: Create a temporary directory and clone the upstream `doughayden/agent-foundation` repository. [checkpoint: setup]
     - [x] Create temp dir using `mktemp -d`. -> `/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge`
     - [x] Clone repo: `git clone git@github.com-personal:doughayden/agent-foundation.git <temp_dir>`.
-- [ ] Task: Generate a file listing for both repositories to compare structures.
-    - [ ] Run `tree` or `find` on `src/` for both repos.
-    - [ ] Save output to `audit_file_structure.txt`.
+- [x] Task: Generate a file listing for both repositories to compare structures. [checkpoint: file-listing]
+    - [x] Run `tree` or `find` on `src/` for both repos.
+    - [x] Save output to `audit_file_structure.txt`.
 - [ ] Task: Conductor - User Manual Verification 'Setup & Analysis' (Protocol in workflow.md)
 
 ## Phase 2: Feature Parity Audit

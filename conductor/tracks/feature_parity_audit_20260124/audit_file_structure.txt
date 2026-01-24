@@ -1,0 +1,27 @@
+LOCAL REPO STRUCTURE (src/):
+src
+src/agent_foundation
+src/agent_foundation/server.py
+src/agent_foundation/tools.py
+src/agent_foundation/__init__.py
+src/agent_foundation/utils
+src/agent_foundation/utils/config.py
+src/agent_foundation/utils/__init__.py
+src/agent_foundation/utils/observability.py
+src/agent_foundation/callbacks.py
+src/agent_foundation/agent.py
+src/agent_foundation/prompt.py
+
+UPSTREAM REPO STRUCTURE (src/):
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/server.py
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/tools.py
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/__init__.py
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/utils
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/utils/config.py
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/utils/__init__.py
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/utils/observability.py
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/callbacks.py
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/agent.py
+/Users/lordpatil-air/.gemini/tmp/6363541dffbb68d50e3fe7de33019bec044de9b2731c3487e47864efc74f342d/tmp.YLHzwpeWge/agent-foundation/src/agent_foundation/prompt.py
