@@ -70,8 +70,8 @@ from pydantic import BaseModel, Field, ValidationError, computed_field
 
 # Original template names - update these when reusing in other template projects
 ORIGINAL_PACKAGE_NAME = "agent_foundation"
-ORIGINAL_REPO_NAME = "agent-foundation"
-ORIGINAL_GITHUB_OWNER = "doughayden"
+ORIGINAL_REPO_NAME = "google-adk-on-bare-metal"
+ORIGINAL_GITHUB_OWNER = "QueryPlanner"
 
 # Output file names for logging results
 DRY_RUN_OUTPUT_FILE = "init_template_dry_run.md"
@@ -495,8 +495,8 @@ def print_summary(config: TemplateConfig, dry_run: bool = False) -> None:
         print("\nNext steps:")
         print("  1. Review changes: git status")
         print("  2. Create .env file: cp .env.example .env")
-        print("  3. Configure .env with your GCP project details")
-        print("  4. Test locally: uv run local-agent")
+        print("  3. Configure .env with your API keys and Database URL")
+        print("  4. Test locally: uv run python -m your_package_name.server")
         print(
             "  5. Commit: git add -A && git commit -m 'chore: initialize from template'"
         )
