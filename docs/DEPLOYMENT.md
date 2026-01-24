@@ -11,6 +11,44 @@ You can deploy this Agent Platform using **Docker** (easiest compatibility) or *
 
 ---
 
+## CI/CD with GitHub Actions
+
+This repository includes a GitHub Actions workflow that automatically:
+1.  **Builds** a multi-stage Docker image on every push.
+2.  **Caches** build layers using GitHub Actions cache (`type=gha`) for ultra-fast rebuilds.
+3.  **Pushes** the image to **GitHub Container Registry (GHCR)**.
+
+### Using GHCR Images
+
+Instead of building locally, you can pull the pre-built image from GHCR.
+
+1.  **Login to GHCR** (on your server):
+    ```bash
+    echo $GITHUB_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+    ```
+2.  **Pull the latest image**:
+    ```bash
+    docker pull ghcr.io/your-username/google-adk-on-bare-metal:main
+    ```
+
+### Automatic Deployment
+
+To automate deployment, update your `compose.yaml` to use the GHCR image:
+
+```yaml
+services:
+  agent:
+    image: ghcr.io/your-username/google-adk-on-bare-metal:main
+    # ... rest of config
+```
+
+Then your update command becomes:
+```bash
+docker compose pull && docker compose up -d
+```
+
+---
+
 ## Option 1: Docker (Recommended for Ease)
 
 Best if you don't want to manage Python versions on the host.
