@@ -26,14 +26,12 @@ COPY --chown=appuser:appgroup pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 
 # Copy the application code and set ownership
-COPY --chown=appuser:appgroup agents/ agents/
-COPY --chown=appuser:appgroup platform_utils/ platform_utils/
-COPY --chown=appuser:appgroup server.py .
+COPY --chown=appuser:appgroup src/ src/
 COPY --chown=appuser:appgroup entrypoint.sh .
 
 # Set environment variables
 ENV PATH="/app/.venv/bin:$PATH"
-ENV AGENTS_DIR="/app/agents"
+ENV AGENTS_DIR="/app/src"
 ENV HOST="0.0.0.0"
 ENV PORT="8080"
 
@@ -47,4 +45,4 @@ USER appuser
 ENTRYPOINT ["/app/entrypoint.sh"]
 
 # Run the server
-CMD ["python", "-m", "server"]
+CMD ["python", "-m", "agent_foundation.server"]
