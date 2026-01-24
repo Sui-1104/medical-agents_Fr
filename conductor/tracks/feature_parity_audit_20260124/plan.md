@@ -10,24 +10,29 @@
 - [x] Task: Conductor - User Manual Verification 'Setup & Analysis' (Protocol in workflow.md)
 
 ## Phase 2: Feature Parity Audit
-- [ ] Task: Compare `src/agent_foundation/agent.py` logic.
-    - [ ] Diff the files.
-    - [ ] Note any missing logic in `audit_report.md`.
-- [ ] Task: Compare `src/agent_foundation/tools.py` available tools.
-    - [ ] List tools in upstream.
-    - [ ] Verify existence in local.
-    - [ ] Note gaps in `audit_report.md`.
-- [ ] Task: Compare `src/agent_foundation/server.py` and API endpoints.
-    - [ ] Verify all routes exist (except GCP-specific health checks if irrelevant).
-- [ ] Task: Compare `src/agent_foundation/utils` and configuration handling.
-    - [ ] Ensure `config.py` handles env vars correctly for self-hosted (e.g., `DATABASE_URL` vs GCP Secret Manager).
-- [ ] Task: Conductor - User Manual Verification 'Feature Parity Audit' (Protocol in workflow.md)
+- [x] Task: Compare `src/agent_foundation/agent.py` logic. [checkpoint: agent-parity]
+    - [x] Diff the files.
+    - [x] Note any missing logic in `audit_report.md`.
+- [x] Task: Compare `src/agent_foundation/tools.py` available tools. [checkpoint: tools-parity]
+    - [x] List tools in upstream.
+    - [x] Verify existence in local.
+    - [x] Note gaps in `audit_report.md`.
+- [x] Task: Compare `src/agent_foundation/server.py` and API endpoints. [checkpoint: server-parity]
+    - [x] Verify all routes exist (except GCP-specific health checks if irrelevant).
+- [x] Task: Compare `src/agent_foundation/utils` and configuration handling. [checkpoint: utils-parity]
+    - [x] Ensure `config.py` handles env vars correctly for self-hosted (e.g., `DATABASE_URL` vs GCP Secret Manager).
+- [x] Task: Conductor - User Manual Verification 'Feature Parity Audit' (Protocol in workflow.md)
 
 ## Phase 3: Gap Resolution (Iterative)
 - [ ] Task: Port any identified missing non-GCP features.
     - [ ] **Sub-task:** Write tests for missing feature.
     - [ ] **Sub-task:** Implement feature.
     - [ ] **Sub-task:** Verify parity.
+- [ ] Task: Implement Multi-LLM Configuration.
+    - [ ] **Sub-task:** Analyze `.venv/lib/python3.13/site-packages/google/adk/models` to understand LiteLLM integration in `google-adk`.
+    - [ ] **Sub-task:** Add `OPENROUTER_API_KEY` to `ServerEnv` in `config.py`.
+    - [ ] **Sub-task:** Verify `litellm` dependency or `google-adk` support.
+    - [ ] **Sub-task:** Test with OpenRouter key (mocked).
 - [ ] Task: Clean up any residual GCP-only code that causes errors in self-hosted mode.
     - [ ] **Sub-task:** Write test case reproducing error (if applicable).
     - [ ] **Sub-task:** Refactor to be platform-agnostic or remove.
