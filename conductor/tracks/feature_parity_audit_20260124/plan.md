@@ -9,7 +9,7 @@
     - [x] Save output to `audit_file_structure.txt`.
 - [x] Task: Conductor - User Manual Verification 'Setup & Analysis' (Protocol in workflow.md)
 
-## Phase 2: Feature Parity Audit
+## Phase 2: Feature Parity Audit [checkpoint: c187651]
 - [x] Task: Compare `src/agent_foundation/agent.py` logic. [checkpoint: agent-parity]
     - [x] Diff the files.
     - [x] Note any missing logic in `audit_report.md`.
