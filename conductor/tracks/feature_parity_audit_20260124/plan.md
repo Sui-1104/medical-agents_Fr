@@ -23,7 +23,7 @@
     - [x] Ensure `config.py` handles env vars correctly for self-hosted (e.g., `DATABASE_URL` vs GCP Secret Manager).
 - [x] Task: Conductor - User Manual Verification 'Feature Parity Audit' (Protocol in workflow.md)
 
-## Phase 3: Gap Resolution (Iterative)
+## Phase 3: Gap Resolution (Iterative) [checkpoint: adc29aa]
 - [x] Task: Port any identified missing non-GCP features. [checkpoint: no-missing-features]
     - [x] **Sub-task:** Write tests for missing feature.
     - [x] **Sub-task:** Implement feature.
@@ -36,7 +36,16 @@
 - [x] Task: Clean up any residual GCP-only code that causes errors in self-hosted mode. [checkpoint: no-residual-gcp-errors]
 - [x] Task: Conductor - User Manual Verification 'Gap Resolution' (Protocol in workflow.md)
 
-## Phase 4: Documentation Overhaul
+## Phase 4: GCP Removal (Bare Metal Adaptation)
+- [ ] Task: Remove GCP-specific parameters from `ServerEnv` in `config.py`.
+    - [ ] Remove `GOOGLE_CLOUD_PROJECT`, `GOOGLE_CLOUD_LOCATION`, `ARTIFACT_SERVICE_URI`, `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`.
+- [ ] Task: Update `server.py` to remove GCP-specific initialization logic.
+    - [ ] Remove conditional OpenTelemetry setup based on GCP project.
+- [ ] Task: Verify removal does not break core functionality.
+    - [ ] Run tests.
+- [ ] Task: Conductor - User Manual Verification 'GCP Removal' (Protocol in workflow.md)
+
+## Phase 5: Documentation Overhaul
 - [ ] Task: Audit `README.md`.
     - [ ] Remove GCP deployment badges/links.
     - [ ] Ensure "Quickstart" is purely local/docker.
@@ -48,7 +57,7 @@
     - [ ] Ensure it focuses on `docker compose` and `systemd`.
 - [ ] Task: Conductor - User Manual Verification 'Documentation Overhaul' (Protocol in workflow.md)
 
-## Phase 5: Final Cleanup
+## Phase 6: Final Cleanup
 - [ ] Task: Remove temporary clone of upstream repo.
 - [ ] Task: Final pass on `audit_report.md` to summarize findings.
 - [ ] Task: Conductor - User Manual Verification 'Final Cleanup' (Protocol in workflow.md)
