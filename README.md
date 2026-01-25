@@ -1,72 +1,81 @@
-## Open Services Agent Starter Pack
+# Google ADK on Bare Metal
 
-This repo is a **production-ready template** for building and deploying AI agents on your own infrastructure using **Google ADK**, **LiteLLM**, and **Postgres**.
+A **production-ready template** for building and deploying Google ADK agents on your own infrastructure (bare metal, VPS, or private cloud) without the complexity or lock-in of heavy cloud providers.
 
-**Key Features:**
-- 🐳 **Self-Hosted Ready**: Docker & Compose setup included for private infrastructure.
-- 🧩 **Extensible**: Structured for adding Tools and Sub-Agents easily.
-- 💾 **Persistent**: Postgres-backed sessions out of the box.
+**Philosophy**
+We believe you should own your agents. This template is designed to strip away the "cloud magic" and give you a clean, performant, and observable foundation that runs anywhere—from a $5/mo VPS to a Raspberry Pi cluster.
+
+## Key Features
+
+- 🐳 **Deploy Anywhere**: Pre-configured Docker & Compose setup. Runs on Hetzner, DigitalOcean, or your basement server.
+- 🔄 **CI/CD Included**: GitHub Actions workflow builds multi-arch images (AMD64/ARM64) and pushes to GHCR automatically.
+- 🔭 **Open Observability**: Built-in OpenTelemetry (OTel) instrumentation. Pre-configured for **Langfuse**, but easily adaptable to Jaeger, Prometheus, or any OTel-compatible backend.
 - 🚀 **Modern Stack**: Python 3.13, `uv`, `fastapi`, `asyncpg`.
+- 💾 **Production Persistence**: Postgres-backed sessions out of the box.
 
-## Quickstart (Local Dev)
+## Quickstart
 
 ### Prerequisites
-
 - Python **3.13+**
 - [`uv`](https://github.com/astral-sh/uv)
-- A Postgres connection string (Neon works great)
-- An OpenRouter or Google API key
+- A Postgres connection string
+- An LLM API Key (OpenRouter or Google)
 
-### 1) Configure env
+### 1) Configure Environment
 
-Create `.env`:
+Copy `.env.example` to `.env`:
 
-- **`AGENT_NAME`**: a unique identifier for your agent (e.g. `my-awesome-agent`)
-- **`GOOGLE_API_KEY`**: your AI Studio key
-- **`OPENROUTER_API_KEY`**: your OpenRouter key (optional, for LiteLLM models)
-- **`DATABASE_URL`**: a Postgres URL (can be the standard `postgresql://...` form)
+- **`AGENT_NAME`**: Unique ID for your agent.
+- **`DATABASE_URL`**: Postgres connection string.
+- **`OPENROUTER_API_KEY`**: Recommended for accessing varied models.
+- **`GOOGLE_API_KEY`**: Optional. Required only if using Gemini models directly.
 
-Notes:
-- We normalize Postgres URLs for SQLAlchemy+asyncpg automatically (e.g.
-  `sslmode=require` becomes `ssl=require`).
-
-### 2) Install deps
+### 2) Install Dependencies
 
 ```bash
 uv sync
 ```
 
-### 3) Run the Agent Platform
+### 3) Run Locally
 
 ```bash
 uv run python -m agent_foundation.server
 ```
+Visit `http://127.0.0.1:8080`.
 
-Then open `http://127.0.0.1:8080`.
+## Deployment: It's Just One Command
 
-## Deployment (Docker)
+We've simplified deployment to the absolute basics. No Kubernetes required.
 
-For production or clean local environments, use Docker.
+### Option 1: Using the Pre-built Image (Recommended)
 
-👉 **[Read the Deployment Guide](docs/DEPLOYMENT.md)**
+Since we include CI/CD, every push to `main` builds a fresh image. On your server:
 
-## Customization
+```bash
+# 1. Pull the latest image
+docker pull ghcr.io/queryplanner/google-adk-on-bare-metal:main
 
-- **Add an Agent**: Create a new folder in `src/` (if multi-agent) or edit `src/agent_foundation/`.
-- **Tools**: Add functions to `src/agent_foundation/tools.py`
-- **Main Logic**: Edit `src/agent_foundation/agent.py`
+# 2. Start the service
+docker compose up -d
+```
 
-## Why not `adk web --session_service_uri ...`?
+### Option 2: Build Yourself
 
-ADK’s CLI defaults to local SQLite session storage unless you pass
-`--session_service_uri`. This repo provides a custom `server.py` so:
+```bash
+git pull
+docker compose up --build -d
+```
 
-- you don’t have to remember a long CLI command
-- sessions always go to Postgres (once `DATABASE_URL` is set)
-- multiple agents are served automatically.
+👉 **[Read the Full Deployment Guide](docs/DEPLOYMENT.md)**
 
-## Development & Observability
+## Observability
 
-- [Development Guide](docs/development.md) - Local workflow and code quality
-- [Observability Guide](docs/base-infra/observability.md) - Langfuse and Tracing setup
-- [Environment Variables](docs/base-infra/environment-variables.md) - Full reference
+The template comes pre-wired with **OpenTelemetry**. By default, it's set up to export traces to **Langfuse** for beautiful, actionable insights into your agent's performance and costs.
+
+To change the backend, simply update the OTel exporter configuration in your `.env`. You are not locked into any specific observability vendor.
+
+## Documentation
+
+- [Development Guide](docs/development.md)
+- [Architecture](docs/architecture.md)
+- [Observability Setup](docs/base-infra/observability.md)
