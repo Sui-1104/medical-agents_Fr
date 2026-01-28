@@ -1,4 +1,8 @@
-"""Custom tools for the LLM agent."""
+"""Custom tools for the LLM agent.
+
+This file is currently empty as the agents rely on the LlmAgent architecture
+and sub-agent delegation rather than specific functional tools.
+"""
 
 import logging
 from typing import Any

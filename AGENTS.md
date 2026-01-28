@@ -1,8 +1,8 @@
-# Google ADK on Bare Metal
+# Medical Workflow Agents - Development Guide
 
 ## Project Overview
 
-**Google ADK on Bare Metal** is a production-ready template designed for building and deploying AI agents using the Google Agent Development Kit (ADK) on self-hosted infrastructure. It removes cloud provider lock-in by providing a clean, performant, and observable foundation that runs on bare metal, VPS, or private clouds.
+**Medical Workflow Agents** is a production-ready system for building and deploying medical AI agents using the Google Agent Development Kit (ADK) on self-hosted infrastructure. It provides a clean, performant, and observable foundation that runs on bare metal, VPS, or private clouds.
 
 ### Key Technologies
 *   **Language:** Python 3.13+
@@ -23,7 +23,7 @@
 ### Setup
 1.  **Configure Environment:**
     Copy `.env.example` to `.env` and set the required variables:
-    *   `AGENT_NAME`: Unique ID for the agent.
+    *   `AGENT_NAME`: Unique ID for the agent (default: `medical_agents`).
     *   `DATABASE_URL`: Postgres connection string.
     *   `OPENROUTER_API_KEY` / `GOOGLE_API_KEY`: LLM API keys.
 
@@ -48,10 +48,14 @@
 
 ### Code Structure
 *   **`src/agent/`**: Contains the core agent logic.
-    *   `agent.py`: Defines the `root_agent` and ADK application configuration.
+    *   `agent.py`: Defines the `root_agent` (MedicalRouter) and agent configuration.
     *   `server.py`: FastAPI server entry point with OTel instrumentation.
     *   `prompt.py`: Manages agent prompts and instructions.
     *   `tools.py`: Helper tools for the agent.
+    *   **`sub_agents/`**: specialized domain agents.
+        *   `soap.py`: SOAP Generator agent.
+        *   `icd10.py`: ICD-10 Coding agent.
+        *   `image_analysis.py`: Radiology analysis agent.
 
 *   **`tests/`**: Unit and integration tests.
 
